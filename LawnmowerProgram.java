@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -84,75 +85,45 @@ public class LawnmowerProgram {
 			move(dimensions, pos2, mov2, pos1);
 			
 			// build the result
-			 for (int i=0; i< pos1.length; i++) {
-			     result.append(pos1[i] + " ");
-			 }
-			 for (int i=0; i< pos2.length; i++) {
-			     result.append(pos2[i] + " ");
-			 }
-			 System.out.println("result :" + result);
-			 
-			 
+			Arrays.stream(pos1).map(s -> s + " ").forEach(result::append);
+			Arrays.stream(pos2).map(s -> s + " ").forEach(result::append);	 
 			
 		} catch (IOException e) {
 			System.out.println("erreur de lecture du fichier :" + e);
 		}
+		
 		return result.toString().trim();
 	}
 
 
 
-	private void move(List<Integer> dimensions, String[] position, char[] instructionsTab, String[] position2) throws Exception {
+	private void move(List<Integer> dimensions, String[] position, char[] instructionsTab, String[] position2)
+			throws Exception {
+		
 		for(char movingCaracter : instructionsTab ) {
 			switch(movingCaracter) {
 				case 'G' :
 					switch(position[2]) {
-						case "N" :
-							System.out.println(position[2]);
-							position[2]="W";
-							System.out.println(position[2]);
-							break;
-						case "W" :
-							position[2]="S";
-							break;
-						case "S" :
-							position[2]="E";
-							break;
-						case "E" :
-							position[2]="N";
-							break;
+						case "N" -> position[2]="W";
+						case "W" -> position[2]="S";
+						case "S" -> position[2]="E";
+						case "E" -> position[2]="N";
 					}
 					break;
 				case 'D' :
 					switch(position[2]) {
-					case "N" :
-						position[2]="E";
-						break;
-					case "E" :
-						position[2]="S";
-						break;
-					case "S" :
-						position[2]="W";
-						break;
-					case "W" :
-						position[2]="N";
-						break;
+					case "N" -> position[2]="E";
+					case "E" -> position[2]="S";
+					case "S" -> position[2]="W";
+					case "W" -> position[2]="N";
 					}
 					break;
 				case 'A' :
 					switch(position[2]) {
-					case "N" :
-						position[1]=String.valueOf(Integer.parseInt(position[1]) + 1);
-						break;
-					case "E" :
-						position[0]=String.valueOf(Integer.parseInt(position[0]) + 1);
-						break;
-					case "S" :
-						position[1]=String.valueOf(Integer.parseInt(position[1]) - 1);
-						break;
-					case "W" :
-						position[0]=String.valueOf(Integer.parseInt(position[0]) - 1);
-						break;
+					case "N" -> position[1]=String.valueOf(Integer.parseInt(position[1]) + 1);
+					case "E" -> position[0]=String.valueOf(Integer.parseInt(position[0]) + 1);
+					case "S" -> position[1]=String.valueOf(Integer.parseInt(position[1]) - 1);
+					case "W" -> position[0]=String.valueOf(Integer.parseInt(position[0]) - 1);
 					}
 					break;
 				}
