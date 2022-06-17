@@ -22,7 +22,7 @@ public class LawnmowerProgram {
 			} catch (IOException e) {
 				System.out.println("File creation error :" + e);
 			} catch (Exception e) {
-				System.out.println("File creation error :" + e);
+				System.out.println("Execution error :" + e);
 			}
 	}
 	
@@ -38,7 +38,7 @@ public class LawnmowerProgram {
 			} catch (IOException e) {
 				System.out.println("File creation error :" + e);
 			} catch (Exception e) {
-				System.out.println("File creation error :" + e);
+				System.out.println("Execution error :" + e);
 			}
 	} 
 	
@@ -54,12 +54,10 @@ public class LawnmowerProgram {
 			} catch (IOException e) {
 				System.out.println("File creation error :" + e);
 			} catch (Exception e) {
-				System.out.println("File creation error :" + e);
+				System.out.println("Execution error :" + e);
 				assertEquals(e.getMessage(), "smash-up");
 			}
 	}
-
-
 
 	private String execute(Path path) throws Exception {
 		StringBuilder result = new StringBuilder();
