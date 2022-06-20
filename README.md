@@ -1,1 +1,1 @@
-# stringCalculator
+# Lawnmower KATA
