@@ -94,8 +94,6 @@ public class LawnmowerProgram {
 		return result.toString().trim();
 	}
 
-
-
 	private void move(List<Integer> dimensions, String[] position, char[] instructionsTab, String[] position2)
 			throws Exception {
 		
