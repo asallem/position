@@ -19,7 +19,6 @@ public class LawnmowerProgram {
 			    Files.write(tempFile, "5 5\n1 2 N\nGAGAGAGAA\n3 3 E\nAADAADADDA".getBytes());
 			    String result = execute(tempFile);
 			    assertEquals(result, "1 3 N 5 1 E");
-			    
 			} catch (IOException e) {
 				System.out.println("File creation error :" + e);
 			} catch (Exception e) {
